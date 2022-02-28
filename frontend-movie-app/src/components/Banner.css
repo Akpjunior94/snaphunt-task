@@ -1,0 +1,35 @@
+.cast {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  border: 1px solid #000000; 
+  padding: 20px;
+  row-gap: 20px;
+}
+
+.cast .cast-img {
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  background: #C4C4C4;
+  margin-right: 32px;
+}
+
+.cast .cast-card {
+  display: flex;
+  gap: 20;
+}
+
+/* .sticky-banner {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  
+} */
+
+@media screen and (max-width: 768px) {
+  .cast {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+}

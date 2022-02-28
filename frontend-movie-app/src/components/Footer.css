@@ -1,0 +1,26 @@
+.footer {
+  background: var(--primary-bg);
+  padding: 20px 0;
+  color: white;
+}
+
+.footer .footer-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .icons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    width: 100%;
+  }
+  .footer .footer-layout {
+    flex-direction: column;
+  }
+}

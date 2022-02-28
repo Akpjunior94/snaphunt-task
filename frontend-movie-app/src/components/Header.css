@@ -1,0 +1,23 @@
+.header {
+  background: var(--primary-bg);
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  margin: auto;
+  top: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    justify-content: space-around;
+  }
+  
+}
+
