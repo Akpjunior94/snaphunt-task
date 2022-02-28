@@ -1,8 +1,7 @@
 import React from 'react'
 import MovieDetails from '../components/MovieDetails'
-import { movieData } from '../Data'
 
-const DetailsPage = () => {
+const DetailsPage = ({movieData}) => {
   return (
     <div>
       <MovieDetails movies={movieData}/>

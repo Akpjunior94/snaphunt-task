@@ -7,16 +7,16 @@ const MovieDetails = ({movies}) => {
   const { id } = useParams()
   console.log(id)
 
-  const singleMovieData = movies.filter(movie => movie.id == id)[0]
+  const singleMovieData = movies.filter(movie => movie._id == id)[0]
   console.log(singleMovieData)
 
   return (
     <div className="details-page container">
       {
         <>
-          <img className='detail-img' src={singleMovieData.bannerImg} />
+          <img className='detail-img' alt="img" src={singleMovieData.bannerImg} />
           <h1>Movie information hub</h1>
-          <p>{singleMovieData.Description}</p>
+          <p>{singleMovieData.description}</p>
         </>
       }
       <Banner movies={movies}/>

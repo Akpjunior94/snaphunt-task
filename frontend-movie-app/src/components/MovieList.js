@@ -8,10 +8,10 @@ const MovieList = ({movies}) => {
   return (
     <div className="movie-list container">
       {movies.map(data => (
-       <Link key={data.id} to={`/details/${data.id}`}>
-          <img src={data.bannerImg}/>
+       <Link key={data._id} to={`/details/${data._id}`}>
+          <img src={data.bannerImg} alt="banner"/>
           <h3>{data.title}</h3>
-          <p>{data.Description.substring(0, 100)}...</p>
+          <p>{data.description.substring(0, 100)}...</p>
         </Link>
       ))}
     </div>

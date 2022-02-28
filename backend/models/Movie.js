@@ -1,14 +1,14 @@
 const mongoose = require('mongoose') 
 
 const MovieSchema = mongoose.Schema({
-  title: String,
-  description: String,
-  categories: String,
-  bannerImg: String,
-  cast: {
-    originalName: String,
-    characterName: String,
-    image: String
+  "title": String,
+  "description": String,
+  "categories": String,
+  "bannerImg": String,
+  "cast": {
+    "originalName": String,
+    "characterName": String,
+    "image": String
   }
 })
 

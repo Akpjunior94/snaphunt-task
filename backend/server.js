@@ -1,10 +1,13 @@
 const express = require('express')
+const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv/config');
 
 // creating the express app and using it
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({extended: true}))
+app.use(cors())
 
 
 // setting up mongoDB
@@ -16,10 +19,11 @@ db.once('open', () => console.log('Connected to Database'))
 
 // importing all routes
 const moviesRoute = require('./routes/api/movies')
+const moviesFilterRoute = require('./routes/api/filter')
 
 // route used as a middleware
 app.use('/movies', moviesRoute);
-// app.use('/moviesFilter', moviesRoute);
+app.use('/movies', moviesFilterRoute);
 
 // Home route
 app.get('/', (req, res) => {

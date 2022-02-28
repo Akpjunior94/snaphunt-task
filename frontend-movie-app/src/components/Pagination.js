@@ -1,19 +1,16 @@
 import React from 'react'
 import './Pagination.css'
 
-const Pagination = ({moviesPerPage, totalMovies, paginate}) => {
-  const pageNumbers = [];
+const Pagination = ({numberOfPages, setPageNumber}) => {
 
-  for (let i = 1; i <= Math.ceil(totalMovies / moviesPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const pages = new Array(numberOfPages).fill(null).map((v, i) => i);
 
   return (
     <div className="pagination">
-      {pageNumbers.map(number => (
-        <li key={number} onClick={() => paginate(number)}>
+      {pages.map(number => (
+        <li key={number} onClick={() => setPageNumber(number)}>
           <span>
-            {number}
+            {number + 1}
           </span> 
         </li>
           ))}

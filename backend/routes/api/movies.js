@@ -5,22 +5,16 @@ const router = express.Router();
 // getting all movies with pagination
 router.get('/', async(req, res, next) => {
   try {
-    let {page, size} = req.query
-    if (!page) {
-      page = 1
-    }
-    if (!size) {
-      size = 12
-    }
-
-    const limit = parseInt(size);
-    const skip = (page - 1) * size
-
-    const movies = await Movie
-      .find({})
-      .limit(limit)
-      .skip(skip)
-    res.send({page, size, data: movies})
+    const PAGE_SIZE = 6;
+    const page = parseInt(req.query.page || "0");
+    const total = await Movie.countDocuments({});
+    const movies = await Movie.find({})
+      .limit(PAGE_SIZE)
+      .skip(PAGE_SIZE * page);
+    res.json({
+      totalPages: Math.ceil(total / PAGE_SIZE),
+      movies,
+    });
     // console.log('i got the header')
   } catch (error) {
     res
@@ -29,8 +23,9 @@ router.get('/', async(req, res, next) => {
   }
 })
 
+
 // add movie data
-router.post('/', async(req, res, next) => {
+router.post('/filter', async(req, res) => {
   const movieData = new Movie({
     title: req.body.title,
     description: req.body.description,

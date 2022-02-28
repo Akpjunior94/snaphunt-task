@@ -4,19 +4,7 @@ import Pagination from '../components/Pagination'
 import Title from '../components/Title'
 
 
-const HomePage = ({movieData}) => {
-  const [data, setData] = useState(movieData)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [moviesPerPage] = useState(9)
-
-
-  // Get current profile
- const indexOfLastMovie = currentPage * moviesPerPage;
- const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
- const currentData = data.slice(indexOfFirstMovie, indexOfLastMovie);
-
- // change page
- const paginate = pageNumber => setCurrentPage(pageNumber)
+const HomePage = ({movieData, setPageNumber, numberOfPages}) => {
 
   return (
     <div className="container">
@@ -24,8 +12,8 @@ const HomePage = ({movieData}) => {
           title="Movie information hub"
           subtitle="We provide a list of your favourite movies and information about the cast."
         />
-        <MovieList movies={currentData}/>
-        <Pagination moviesPerPage={moviesPerPage} totalMovies={data.length} paginate={paginate}/>
+        <MovieList movies={movieData}/>
+        <Pagination numberOfPages={numberOfPages} setPageNumber={setPageNumber}/>
     </div>
   )
 }
