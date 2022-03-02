@@ -2,7 +2,7 @@
   margin-top: 40px;
   margin-bottom: 40px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 33px;
 }
 
@@ -18,4 +18,17 @@
 .movie-list img {
   width: 100%;
   height: 265.1px;
+}
+
+@media screen and (max-width: 768px) {
+  .movie-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .movie-list {
+    grid-template-columns: 1fr;
+  }
 }
