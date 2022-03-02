@@ -1,18 +1,18 @@
 import React from 'react'
 
-const Searchbar = ({text, setText, handleSearch}) => {
+const Searchbar = ({handleSearch}) => {
 
   return (
     <div className='searchbar'>
-      <form onSubmit={handleSearch}>
+      <div>
         <input 
           type="text" 
           placeholder="Search title"
-          onChange={(e)=>setText(e.target.value)}
-          value={text}
+          onChange={(e)=>handleSearch(e.target.value)}
+          // value={text}
           required
         />
-      </form>
+      </div>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import Logo from '../assets/logo.png'
 import './Header.css'
 import Searchbar from './Searchbar'
 
-const Header = ({text, setText, handleSearch}) => {
+const Header = ({text, setText, handleSearch, filteredResult}) => {
 
   return (
     <div className="header">
@@ -12,7 +12,7 @@ const Header = ({text, setText, handleSearch}) => {
         <Link to="/">
           <img src={Logo} alt="logo" />
         </Link>
-        <Searchbar text={text} setText={setText} handleSearch={handleSearch}/>
+        <Searchbar handleSearch={handleSearch}/>
       </nav>
     </div>
   )

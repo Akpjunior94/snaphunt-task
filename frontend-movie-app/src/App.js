@@ -12,7 +12,7 @@ function App() {
   const [pageNumber, setPageNumber] = useState(0);
   const [numberOfPages, setNumberOfPages] = useState(0);
   const [text, setText] = useState('')
-
+  const [filteredResult, setFilteredResult] = useState([])
 
   useEffect(() => {
     const movieData = async() => {
@@ -27,13 +27,26 @@ function App() {
     movieData()
   }, [pageNumber])
 
+  const handleSearch = (searchValue) => {
+    setText(searchValue)
+    if (text !== '') {
+      const filteredData = data.filter((item) => {
+         // return Object.values(item).join('').toLowerCase().includes(text.toLowerCase()) //this searches all through the data values(title, description and so on)
+          return item.title.toLowerCase().includes(text.toLowerCase())
+      })
+      setFilteredResult(filteredData)
+    } else{
+      setFilteredResult(data)
+    }
+  }
+
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Header text={text} setText={setText}/>
+        <Header handleSearch={handleSearch} filteredResult={filteredResult} text={text}/>
         <Routes>
-          <Route path="/" element={<HomePage movieData={data} numberOfPages={numberOfPages} setPageNumber={setPageNumber}/>}/>
+          <Route path="/" element={<HomePage movieData={data} numberOfPages={numberOfPages} filteredResult={filteredResult} text={text} setPageNumber={setPageNumber}/>}/>
           <Route path="/details/:id" element={<DetailsPage movieData={data}/>}/>
         </Routes>
         <ScrollToTop/>
